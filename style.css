@@ -1,35 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Orbitron', sans-serif;
-  color: white;
-  background: url('https://qu.ax/uvQWt.jpg') no-repeat center center fixed;
+  background-image: url('https://qu.ax/uvQWt.jpg');
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
   text-align: center;
 }
 
 .container {
-  padding: 30px 20px;
+  padding: 20px;
 }
 
+/* Judul dengan efek neon glow tebal */
 h1 {
   font-size: 28px;
   color: #00fff7;
-  text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+  text-shadow:
+    0 0 5px #00fff7,
+    0 0 15px #00fff7,
+    0 0 30px #00fff7,
+    0 0 50px #00fff7;
   margin-bottom: 30px;
 }
 
-.section-box, .contact-section {
-  background-color: rgba(0, 0, 0, 0.5); /* semi transparan */
-  padding: 20px;
-  border-radius: 15px;
-  margin: 20px auto;
-  max-width: 300px;
-  box-shadow: 0 0 10px #00fff7;
+/* Kotak konten transparan */
+.glass-box {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 255, 247, 0.5);
 }
 
+/* Tombol glow soft */
 .button {
   background-color: #00fff7;
   color: black;
@@ -41,7 +49,7 @@ h1 {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+  box-shadow: 0 0 6px rgba(0, 255, 247, 0.6);
   transition: transform 0.2s;
 }
 
@@ -49,53 +57,43 @@ h1 {
   transform: scale(1.05);
 }
 
-.show-btn, .copy-btn {
-  background-color: white;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
+/* Tombol hitam (QRIS & Salin Nomor) */
+.button-black {
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
+/* Tombol WhatsApp & Instagram */
 .wa-button {
-  background-color: #25D366;
+  background-color: #25d366;
   color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 15px;
-  font-size: 16px;
   font-weight: bold;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
   width: 100%;
   cursor: pointer;
-  box-shadow: 0 0 10px #25D366, 0 0 20px #25D366;
-  transition: transform 0.2s;
-}
-
-.wa-button:hover {
-  transform: scale(1.05);
+  box-shadow: 0 0 6px #25d366;
 }
 
 .ig-button {
-  background-color: #ff2e74;
+  background-color: #f52887;
   color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 15px;
-  font-size: 16px;
   font-weight: bold;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
   width: 100%;
   cursor: pointer;
-  box-shadow: 0 0 10px #ff2e74, 0 0 20px #ff2e74;
-  transition: transform 0.2s;
+  box-shadow: 0 0 6px #f52887;
 }
 
-.ig-button:hover {
-  transform: scale(1.05);
-}
-
-img {
-  max-width: 100%;
-  border-radius: 10px;
+/* Responsive */
+@media screen and (min-width: 600px) {
+  .button, .wa-button, .ig-button {
+    width: 400px;
+  }
 }
