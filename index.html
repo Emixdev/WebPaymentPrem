@@ -3,68 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Web Payment Emix Store</title>
+  <title>Emix Store Payment</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1 id="judul" class="typing-effect">WELLCOME TO WEB PAYMENT EMIX STORE</h1>
+    <h1 class="neon-text">WELLCOME TO WEB PAYMENT EMIX STORE</h1>
 
-    <div class="button-group">
-      <button class="price-button">Murid Nokos<br>Rp5.000</button>
-      <button class="price-button">Murid PP saluran Wa<br>Rp10.000</button>
+    <div class="product-section">
+      <a href="#" class="product-button">Murid Nokos <br> Rp5.000</a>
+      <a href="#" class="product-button">Murid PP saluran Wa <br> Rp10.000</a>
     </div>
 
-    <p class="section-title">Scan QRIS di bawah ini:</p>
-    <div id="qris-container" style="display: none;">
-      <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-image" />
-      <button class="toggle-qris" onclick="toggleQRIS()">*Sembunyikan QRIS</button>
+    <p>Scan QRIS di bawah ini:</p>
+    <button class="qris-button" onclick="toggleQRIS()">*Tampilkan QRIS</button>
+    <div id="qrisImage" style="display: none;">
+      <img src="https://qu.ax/srsEc.png" alt="QRIS Emix Store" class="qris-img">
     </div>
-    <button class="toggle-qris" onclick="toggleQRIS()" id="showQrisBtn">*Tampilkan QRIS</button>
 
-    <p class="section-title">Payment virtual DANA:<br>083137731581<br>a.n Yori Asanagi</p>
-    <button class="copy-button" onclick="copyNumber()">Salin nomor</button>
+    <div class="payment-info">
+      <p>Payment virtual DANA:<br><strong>083137731581</strong><br>a.n Yori Asanagi</p>
+      <button class="copy-button" onclick="copyNumber()">Salin nomor</button>
+    </div>
 
     <div class="contact-section">
       <p>Contact Emix Store via WhatsApp</p>
-      <a href="https://wa.me/62895391694499" target="_blank" class="wa-button">Chat via WhatsApp</a>
-    </div>
+      <a href="https://wa.me/62895391694499" class="whatsapp-button" target="_blank">Chat via WhatsApp</a>
 
-    <div class="contact-section">
       <p>Follow Instagram Emix Store</p>
-      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" target="_blank" class="ig-button">Instagram Emix</a>
+      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="instagram-button" target="_blank">Instagram Emix</a>
     </div>
   </div>
 
   <script>
     function toggleQRIS() {
-      const qris = document.getElementById("qris-container");
-      const btn = document.getElementById("showQrisBtn");
-      if (qris.style.display === "none") {
-        qris.style.display = "block";
-        btn.style.display = "none";
-      } else {
-        qris.style.display = "none";
-        btn.style.display = "inline-block";
-      }
+      const qris = document.getElementById("qrisImage");
+      qris.style.display = qris.style.display === "none" ? "block" : "none";
     }
 
     function copyNumber() {
-      const temp = document.createElement("input");
-      temp.value = "083137731581";
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
+      navigator.clipboard.writeText("083137731581");
       alert("Nomor berhasil disalin!");
     }
-
-    // Efek transisi dari typing ke neon + fade
-    setTimeout(() => {
-      const judul = document.getElementById('judul');
-      judul.classList.remove('typing-effect');
-      judul.classList.add('neon-glow', 'fade-loop');
-    }, 3000);
   </script>
 </body>
 </html>
