@@ -5,46 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emix Store Payment</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1 class="neon-text">WELLCOME TO WEB PAYMENT EMIX STORE</h1>
+    <h1>WELLCOME TO WEB<br>PAYMENT EMIX STORE</h1>
 
-    <div class="product-section">
-      <a href="#" class="product-button">Murid Nokos <br> Rp5.000</a>
-      <a href="#" class="product-button">Murid PP saluran Wa <br> Rp10.000</a>
+    <div class="section-box">
+      <button class="button">Murid Nokos<br>Rp5.000</button>
+      <button class="button">Murid PP saluran Wa<br>Rp10.000</button>
     </div>
 
-    <p>Scan QRIS di bawah ini:</p>
-    <button class="qris-button" onclick="toggleQRIS()">*Tampilkan QRIS</button>
-    <div id="qrisImage" style="display: none;">
-      <img src="https://qu.ax/srsEc.png" alt="QRIS Emix Store" class="qris-img">
-    </div>
-
-    <div class="payment-info">
-      <p>Payment virtual DANA:<br><strong>083137731581</strong><br>a.n Yori Asanagi</p>
-      <button class="copy-button" onclick="copyNumber()">Salin nomor</button>
+    <div class="section-box">
+      <p>Scan QRIS di bawah ini:</p>
+      <button class="show-btn" onclick="showQRIS()">*Tampilkan QRIS</button>
+      <div id="qrisImage" style="display:none; margin-top:10px;">
+        <img src="https://qu.ax/srsEc.png" alt="QRIS" width="200" />
+      </div>
+      <p style="margin-top: 15px;">Payment virtual DANA:<br>
+      083137731581<br>a.n Yori Asanagi</p>
+      <button class="copy-btn" onclick="copyText()">Salin nomor</button>
     </div>
 
     <div class="contact-section">
       <p>Contact Emix Store via WhatsApp</p>
-      <a href="https://wa.me/62895391694499" class="whatsapp-button" target="_blank">Chat via WhatsApp</a>
-
-      <p>Follow Instagram Emix Store</p>
-      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="instagram-button" target="_blank">Instagram Emix</a>
+      <a href="https://wa.me/62895391694499" target="_blank">
+        <button class="wa-button">Chat via WhatsApp</button>
+      </a>
     </div>
+
+    <div class="contact-section">
+      <p>Follow Instagram Emix Store</p>
+      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" target="_blank">
+        <button class="ig-button">Instagram Emix</button>
+      </a>
+    </div>
+
+    <div class="contact-section">
+      <p>Gabung Saluran Emix Store</p>
+      <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" target="_blank">
+        <button class="wa-button">Saluran WhatsApp</button>
+      </a>
+    </div>
+
+    <div class="contact-section">
+      <p>Grup Jual Beli Akun</p>
+      <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" target="_blank">
+        <button class="wa-button">Gabung Grup</button>
+      </a>
+    </div>
+
   </div>
 
   <script>
-    function toggleQRIS() {
-      const qris = document.getElementById("qrisImage");
-      qris.style.display = qris.style.display === "none" ? "block" : "none";
+    function showQRIS() {
+      const img = document.getElementById("qrisImage");
+      img.style.display = img.style.display === "none" ? "block" : "none";
     }
 
-    function copyNumber() {
-      navigator.clipboard.writeText("083137731581");
-      alert("Nomor berhasil disalin!");
+    function copyText() {
+      const nomor = "083137731581";
+      navigator.clipboard.writeText(nomor).then(function() {
+        alert("Nomor DANA berhasil disalin!");
+      });
     }
   </script>
 </body>
