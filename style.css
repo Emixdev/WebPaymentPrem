@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background: url('https://qu.ax/uvQWt.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  padding: 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 0 0 20px #000;
+}
+
+/* Typing animation */
+.typing-effect {
+  overflow: hidden;
+  border-right: .15em solid #fff;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Neon Glow */
+.neon-glow {
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff;
+}
+
+/* Fade in & out loop */
+@keyframes fadeLoop {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.03); }
+}
+.fade-loop {
+  animation: fadeLoop 3s infinite;
+}
+
+/* Button styles */
+.button-group {
+  margin: 20px 0;
+}
+.price-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #0ff;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.price-button:hover {
+  transform: scale(1.1);
+}
+
+.section-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.qris-image {
+  width: 200px;
+  margin: 10px 0;
+}
+
+.toggle-qris {
+  padding: 8px 16px;
+  margin: 10px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.copy-button {
+  margin: 15px;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #0ff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+.copy-button:hover {
+  background: #00f2f2;
+}
+
+.contact-section {
+  margin-top: 30px;
+}
+
+.wa-button, .ig-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.ig-button {
+  background: #E1306C;
+}
+
+.wa-button:hover {
+  background: #1ebe5c;
+}
+.ig-button:hover {
+  background: #c1255d;
+}
