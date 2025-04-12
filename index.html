@@ -18,13 +18,17 @@
 <script>
   const music = document.getElementById('bg-music');
 
-  // Autoplay saat halaman dimuat (jika diizinkan browser)
-  window.addEventListener('DOMContentLoaded', () => {
-    music.play().catch(() => {
-      // Autoplay mungkin diblokir, biarin aja
-    });
-  });
+  // Fungsi play saat user pertama kali interaksi
+  const tryPlay = () => {
+    music.play();
+    document.removeEventListener('click', tryPlay);
+    document.removeEventListener('scroll', tryPlay);
+  };
 
+  document.addEventListener('click', tryPlay);
+  document.addEventListener('scroll', tryPlay);
+
+  // Toggle Music manual
   function toggleMusic() {
     if (music.paused) {
       music.play();
