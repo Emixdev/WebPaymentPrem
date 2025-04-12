@@ -1,139 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Emix Store Payment</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="zoom-in">
+/* Background & zoom-in */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-image: url('https://qu.ax/qBxAy.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  animation: zoomIn 1s ease;
+}
 
-  <!-- Background Partikel -->
-  <div id="particles-js"></div>
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
-  <!-- Popup -->
-  <div class="popup" id="popup">
-    Gabung grup WhatsApp Emix untuk info promo & bonus!<br>
-    Butuh website seperti ini? <a href="https://wa.me/62895391694499" style="color:#fff;text-decoration:underline;">Chat Emix Sekarang!</a>
-  </div>
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 30px 20px;
+}
 
-  <!-- Toggle Mode -->
-  <button class="mode-toggle" onclick="toggleMode()">Toggle Mode</button>
+/* Glitch Text */
+.glitch {
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  animation: glowPulse 2s infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.glitch::before {
+  top: -2px;
+  color: #f0f;
+  animation: glitch 1s infinite linear alternate-reverse;
+}
+.glitch::after {
+  top: 2px;
+  color: #0ff;
+  animation: glitch 1s infinite linear alternate-reverse;
+}
 
-  <!-- Musik -->
-  <audio id="bg-music" autoplay loop>
-    <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+@keyframes glitch {
+  0% { transform: translateX(-1px); }
+  20% { transform: translateX(1px); }
+  40% { transform: translateX(-1px); }
+  60% { transform: translateX(1px); }
+  80% { transform: translateX(-1px); }
+  100% { transform: translateX(1px); }
+}
 
-  <button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
+/* Card */
+.card {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+  text-align: center;
+}
 
-  <script>
-    const music = document.getElementById('bg-music');
-    const tryPlay = () => {
-      music.play();
-      document.removeEventListener('click', tryPlay);
-      document.removeEventListener('scroll', tryPlay);
-    };
-    document.addEventListener('click', tryPlay);
-    document.addEventListener('scroll', tryPlay);
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-      } else {
-        music.pause();
-      }
-    }
-  </script>
+/* Button */
+.button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 24px;
+  background: #000000b3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+}
 
-  <div class="overlay"></div>
+/* QRIS Image */
+.qris-img {
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 12px;
+}
 
-  <div class="container">
-    <h1 class="glitch" data-text="Wellcome to Website Emix Store">
-      Wellcome to Website Emix Store
-    </h1>
+/* Glowing pulse */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+  }
+  50% {
+    text-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+  }
+  100% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+  }
+}
 
-    <div class="card">
-      <h2>Murid Nokos</h2>
-      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20nokos" class="button">Order via WhatsApp</a>
-    </div>
+/* Toggle Button Container */
+.toggle-buttons {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+}
 
-    <div class="card">
-      <h2>Murid Paid Promote</h2>
-      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20paid%20promote" class="button">Order via WhatsApp</a>
-    </div>
+/* Toggle Buttons */
+.toggle-buttons button {
+  padding: 10px 16px;
+  background: #000000b3;
+  color: #0ff;
+  border: none;
+  border-radius: 10px;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #0ff;
+  transition: transform 0.2s, background 0.3s;
+}
+.toggle-buttons button:hover {
+  transform: scale(1.05);
+  background: #111;
+}
 
-    <div class="card">
-      <h2>QRIS Pembayaran</h2>
-      <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-img">
-      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS" class="button">Saya sudah bayar</a>
-    </div>
-
-    <div class="card">
-      <h2>Contact Emix Store</h2>
-      <a href="https://wa.me/62895391694499" class="button">WhatsApp Emix</a>
-    </div>
-
-    <div class="card">
-      <h2>Instagram</h2>
-      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="button">Kunjungi IG</a>
-    </div>
-
-    <div class="card">
-      <h2>Grup Jual Beli Akun</h2>
-      <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" class="button">Join Grup</a>
-    </div>
-
-    <div class="card">
-      <h2>Saluran WhatsApp</h2>
-      <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" class="button">Masuk Saluran</a>
-    </div>
-  </div>
-
-  <!-- Script Partikel -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": { "enable": true, "speed": 3 }
-      },
-      "interactivity": {
-        "events": { "onhover": { "enable": true, "mode": "repulse" } }
-      },
-      "retina_detect": true
-    });
-  </script>
-
-  <!-- Script Popup -->
-  <script>
-    window.onload = function () {
-      setTimeout(function () {
-        document.getElementById("popup").classList.add("show");
-      }, 2000);
-      setTimeout(function () {
-        document.getElementById("popup").classList.remove("show");
-      }, 8000);
-    };
-  </script>
-
-  <!-- Toggle Mode Script -->
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle("light-mode");
-    }
-  </script>
-
-</body>
-</html>
+/* Light Mode */
+body.light-mode {
+  background: #fff;
+  color: #000;
+}
+body.light-mode .card {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+body.light-mode .button {
+  background: #00000033;
+  color: #000;
+  box-shadow: 0 0 10px #00f;
+}
