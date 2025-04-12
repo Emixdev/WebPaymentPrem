@@ -1,4 +1,162 @@
-/* === Background & zoom-in === */
+/* Background & zoom-in */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background-image: url('https://qu.ax/qBxAy.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* Glitch Text */
+.glitch {
+  font-size: 1.8rem;
+  font-weight: bold;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  animation: glowPulse 2s infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.glitch::before {
+  top: -2px;
+  color: #f0f;
+  animation: glitch 1s infinite linear alternate-reverse;
+}
+.glitch::after {
+  top: 2px;
+  color: #0ff;
+  animation: glitch 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+  0% { transform: translateX(-1px); }
+  20% { transform: translateX(1px); }
+  40% { transform: translateX(-1px); }
+  60% { transform: translateX(1px); }
+  80% { transform: translateX(-1px); }
+  100% { transform: translateX(1px); }
+}
+
+/* Card */
+.card {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+  text-align: center;
+}
+
+/* Button */
+.button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 24px;
+  background: #000000b3;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+}
+
+/* QRIS Image */
+.qris-img {
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 12px;
+}
+
+/* Glowing pulse */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+  }
+  50% {
+    text-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+  }
+  100% {
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+  }
+}
+
+/* Toggle Button Container */
+.toggle-buttons {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999;
+  display: flex;
+  gap: 10px;
+}
+
+/* Toggle Buttons */
+.toggle-buttons button {
+  padding: 10px 16px;
+  background: #000000b3;
+  color: #0ff;
+  border: none;
+  border-radius: 10px;
+  font-family: monospace;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px #0ff;
+  transition: transform 0.2s, background 0.3s;
+}
+.toggle-buttons button:hover {
+  transform: scale(1.05);
+  background: #111;
+}
+
+/* Light Mode */
+body.light-mode {
+  background: #fff;
+  color: #000;
+}
+body.light-mode .card {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+body.light-mode .button {
+  background: #00000033;
+  color: #000;
+  box-shadow: 0 0 10px #00f;
+}/* === Background & zoom-in === */
 body {
   margin: 0;
   padding: 0;
