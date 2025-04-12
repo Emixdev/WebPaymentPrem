@@ -108,27 +108,6 @@
       margin-top: 10px;
     }
 
-    /* Toggle mode button */
-    #mode-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      padding: 10px 14px;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-      font-family: monospace;
-      background: #000000b3;
-      color: #0ff;
-      box-shadow: 0 0 10px #0ff;
-      cursor: pointer;
-      z-index: 999;
-      transition: transform 0.2s;
-    }
-    #mode-toggle:hover {
-      transform: scale(1.05);
-    }
-
     /* Light mode */
     body.light-mode {
       background: #f5f5f5;
@@ -172,13 +151,6 @@
       pointer-events: auto;
     }
 
-    .close-popup {
-      cursor: pointer;
-      display: block;
-      margin-top: 10px;
-      font-size: 20px;
-    }
-
     /* Particles container */
     #particles-js {
       position: fixed;
@@ -187,6 +159,27 @@
       width: 100%;
       height: 100%;
       z-index: 0;
+    }
+
+    /* Mode & Music Buttons */
+    #mode-toggle, #music-toggle {
+      position: fixed;
+      right: 10px;
+      padding: 10px 14px;
+      background: #000;
+      color: #0ff;
+      border: none;
+      border-radius: 10px;
+      font-family: monospace;
+      box-shadow: 0 0 10px #0ff;
+      z-index: 9999;
+      cursor: pointer;
+    }
+    #mode-toggle {
+      bottom: 60px;
+    }
+    #music-toggle {
+      bottom: 10px;
     }
   </style>
 </head>
@@ -198,9 +191,8 @@
     Your browser does not support the audio element.
   </audio>
 
-  <button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
-
   <button id="mode-toggle" onclick="toggleMode()">Light Mode</button>
+  <button id="music-toggle" onclick="toggleMusic()">Toggle Musik</button>
 
   <div id="popup" class="popup">
     <p>Gabung grup jual beli akun & order jasa pembuatan website Emix sekarang!</p>
@@ -208,8 +200,11 @@
     <span class="close-popup" onclick="document.getElementById('popup').style.display='none'">×</span>
   </div>
 
+  <div class="overlay"></div>
   <div class="container">
-    <h1 class="glitch" data-text="Wellcome to Website Emix Store">Wellcome to Website Emix Store</h1>
+    <h1 class="glitch" data-text="Wellcome to Website Emix Store">
+      Wellcome to Website Emix Store
+    </h1>
 
     <div class="card">
       <h2>Murid Nokos</h2>
@@ -252,8 +247,13 @@
   <script>
     const music = document.getElementById('bg-music');
     function toggleMusic() {
-      if (music.paused) music.play();
-      else music.pause();
+      if (music.paused) {
+        music.play().catch(() => {
+          alert("Klik layar dulu untuk aktifin audio!");
+        });
+      } else {
+        music.pause();
+      }
     }
 
     function toggleMode() {
