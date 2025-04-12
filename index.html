@@ -8,36 +8,44 @@
 </head>
 <body class="zoom-in">
 
+  <!-- Background Partikel -->
+  <div id="particles-js"></div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    Gabung grup WhatsApp Emix untuk info promo & bonus!<br>
+    Butuh website seperti ini? <a href="https://wa.me/62895391694499" style="color:#fff;text-decoration:underline;">Chat Emix Sekarang!</a>
+  </div>
+
+  <!-- Toggle Mode -->
+  <button class="mode-toggle" onclick="toggleMode()">Toggle Mode</button>
+
+  <!-- Musik -->
   <audio id="bg-music" autoplay loop>
-  <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+    <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-<button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
+  <button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
 
-<script>
-  const music = document.getElementById('bg-music');
-
-  // Fungsi play saat user pertama kali interaksi
-  const tryPlay = () => {
-    music.play();
-    document.removeEventListener('click', tryPlay);
-    document.removeEventListener('scroll', tryPlay);
-  };
-
-  document.addEventListener('click', tryPlay);
-  document.addEventListener('scroll', tryPlay);
-
-  // Toggle Music manual
-  function toggleMusic() {
-    if (music.paused) {
+  <script>
+    const music = document.getElementById('bg-music');
+    const tryPlay = () => {
       music.play();
-    } else {
-      music.pause();
+      document.removeEventListener('click', tryPlay);
+      document.removeEventListener('scroll', tryPlay);
+    };
+    document.addEventListener('click', tryPlay);
+    document.addEventListener('scroll', tryPlay);
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
     }
-  }
-</script>
-  
+  </script>
+
   <div class="overlay"></div>
 
   <div class="container">
@@ -80,7 +88,52 @@
       <h2>Saluran WhatsApp</h2>
       <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" class="button">Masuk Saluran</a>
     </div>
-
   </div>
+
+  <!-- Script Partikel -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 3 }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" } }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+  <!-- Script Popup -->
+  <script>
+    window.onload = function () {
+      setTimeout(function () {
+        document.getElementById("popup").classList.add("show");
+      }, 2000);
+      setTimeout(function () {
+        document.getElementById("popup").classList.remove("show");
+      }, 8000);
+    };
+  </script>
+
+  <!-- Toggle Mode Script -->
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+    }
+  </script>
+
 </body>
 </html>
