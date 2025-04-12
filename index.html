@@ -1,61 +1,74 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emix Store Payment</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="zoom-in">  <div id="particles-js"></div>  <audio id="bg-music" autoplay loop>
+<body class="zoom-in">
+  <div id="particles-js"></div>
+
+  <audio id="bg-music" loop>
     <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
     Your browser does not support the audio element.
-  </audio><button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
+  </audio>
 
-<button id="mode-toggle" onclick="toggleMode()" style="position:fixed; top:10px; right:10px; z-index:9999; background:#000; color:#0ff; padding:8px 12px; border:none; border-radius:8px; font-family:monospace;">Light Mode</button>
+  <button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
+
+  <button id="mode-toggle" onclick="toggleMode()" style="position:fixed; top:10px; right:10px; z-index:9999; background:#000; color:#0ff; padding:8px 12px; border:none; border-radius:8px; font-family:monospace;">Light Mode</button>
 
   <div id="popup" class="popup">
     <p>Gabung grup jual beli akun & order jasa pembuatan website Emix sekarang!</p>
     <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" class="button" style="margin-top: 10px;">Join Sekarang</a>
     <span class="close-popup" onclick="document.getElementById('popup').style.display='none'">×</span>
-  </div>  <div class="overlay"></div>  <div class="container">
+  </div>
+
+  <div class="overlay"></div>
+  <div class="container">
     <h1 class="glitch" data-text="Wellcome to Website Emix Store">
       Wellcome to Website Emix Store
-    </h1><div class="card">
-  <h2>Murid Nokos</h2>
-  <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20nokos" class="button">Order via WhatsApp</a>
-</div>
+    </h1>
 
-<div class="card">
-  <h2>Murid Paid Promote</h2>
-  <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20paid%20promote" class="button">Order via WhatsApp</a>
-</div>
+    <div class="card">
+      <h2>Murid Nokos</h2>
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20nokos" class="button">Order via WhatsApp</a>
+    </div>
 
-<div class="card">
-  <h2>QRIS Pembayaran</h2>
-  <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-img">
-  <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS" class="button">Saya sudah bayar</a>
-</div>
+    <div class="card">
+      <h2>Murid Paid Promote</h2>
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20paid%20promote" class="button">Order via WhatsApp</a>
+    </div>
 
-<div class="card">
-  <h2>Contact Emix Store</h2>
-  <a href="https://wa.me/62895391694499" class="button">WhatsApp Emix</a>
-</div>
+    <div class="card">
+      <h2>QRIS Pembayaran</h2>
+      <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-img">
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS" class="button">Saya sudah bayar</a>
+    </div>
 
-<div class="card">
-  <h2>Instagram</h2>
-  <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="button">Kunjungi IG</a>
-</div>
+    <div class="card">
+      <h2>Contact Emix Store</h2>
+      <a href="https://wa.me/62895391694499" class="button">WhatsApp Emix</a>
+    </div>
 
-<div class="card">
-  <h2>Grup Jual Beli Akun</h2>
-  <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" class="button">Join Grup</a>
-</div>
+    <div class="card">
+      <h2>Instagram</h2>
+      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="button">Kunjungi IG</a>
+    </div>
 
-<div class="card">
-  <h2>Saluran WhatsApp</h2>
-  <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" class="button">Masuk Saluran</a>
-</div>
+    <div class="card">
+      <h2>Grup Jual Beli Akun</h2>
+      <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" class="button">Join Grup</a>
+    </div>
 
-  </div>  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>  <script>
+    <div class="card">
+      <h2>Saluran WhatsApp</h2>
+      <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" class="button">Masuk Saluran</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
     const music = document.getElementById('bg-music');
     function toggleMusic() {
       if (music.paused) music.play();
@@ -96,5 +109,6 @@
       },
       "retina_detect": true
     });
-  </script></body>
+  </script>
+</body>
 </html>
