@@ -8,24 +8,23 @@
 </head>
 <body class="zoom-in">
 
+  <!-- Musik Latar -->
   <audio id="bg-music" autoplay loop>
-  <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-<button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
-
-<script>
-  const music = document.getElementById('bg-music');
-  function toggleMusic() {
-    if (music.paused) {
-      music.play();
-    } else {
-      music.pause();
+    <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
+  <script>
+    const music = document.getElementById('bg-music');
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
     }
-  }
-</script>
-  
+  </script>
+
   <div class="overlay"></div>
 
   <div class="container">
