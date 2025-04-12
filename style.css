@@ -38,7 +38,9 @@ body {
   color: #fff;
   text-align: center;
   animation: glowPulse 2s infinite;
+  text-shadow: 0 0 3px #0ff, 0 0 5px #f0f;
 }
+
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -46,25 +48,33 @@ body {
   left: 0;
   width: 100%;
   overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
 }
+
 .glitch::before {
   top: -2px;
   color: #f0f;
-  animation: glitch 1s infinite linear alternate-reverse;
+  animation: glitchTop 1s infinite linear alternate-reverse;
 }
+
 .glitch::after {
   top: 2px;
   color: #0ff;
-  animation: glitch 1s infinite linear alternate-reverse;
+  animation: glitchBottom 1.2s infinite linear alternate-reverse;
 }
 
-@keyframes glitch {
-  0% { transform: translateX(-1px); }
-  20% { transform: translateX(1px); }
-  40% { transform: translateX(-1px); }
-  60% { transform: translateX(1px); }
-  80% { transform: translateX(-1px); }
-  100% { transform: translateX(1px); }
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(0.5px, -0.5px); }
+  10% { clip: rect(0, 9999px, 5px, 0); transform: translate(-1.5px, 1px); }
+  20% { clip: rect(0, 9999px, 3px, 0); transform: translate(1px, -1px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(-0.5px, 0.5px); }
+  10% { clip: rect(6px, 9999px, 12px, 0); transform: translate(1.5px, -1px); }
+  20% { clip: rect(3px, 9999px, 10px, 0); transform: translate(-1px, 1px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
 }
 
 /* Card shape background */
