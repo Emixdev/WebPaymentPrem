@@ -1,102 +1,74 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emix Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Background & zoom-in */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      background: url('https://qu.ax/qBxAy.jpg') no-repeat center center fixed;
-      background-size: cover;
-      animation: zoomIn 1s ease;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emix Store Payment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="zoom-in">
 
-    @keyframes zoomIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+  <audio id="bg-music" autoplay loop>
+  <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-    /* Container */
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 30px 20px;
-    }
+<button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
 
-    /* Glitch Text */
-    .glitch {
-      font-size: 1.8rem;
-      font-weight: bold;
-      position: relative;
-      color: #fff;
-      text-align: center;
-      animation: glowPulse 2s infinite;
-      text-shadow: 0 0 3px #0ff, 0 0 5px #f0f;
+<script>
+  const music = document.getElementById('bg-music');
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
     }
+  }
+</script>
+  
+  <div class="overlay"></div>
 
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      clip: rect(0, 900px, 0, 0);
-    }
+  <div class="container">
+    <h1 class="glitch" data-text="Wellcome to Website Emix Store">
+      Wellcome to Website Emix Store
+    </h1>
 
-    .glitch::before {
-      top: -2px;
-      color: #f0f;
-      animation: glitchTop 1s infinite linear alternate-reverse;
-    }
+    <div class="card">
+      <h2>Murid Nokos</h2>
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20nokos" class="button">Order via WhatsApp</a>
+    </div>
 
-    .glitch::after {
-      top: 2px;
-      color: #0ff;
-      animation: glitchBottom 1.2s infinite linear alternate-reverse;
-    }
+    <div class="card">
+      <h2>Murid Paid Promote</h2>
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20paid%20promote" class="button">Order via WhatsApp</a>
+    </div>
 
-    @keyframes glitchTop {
-      0% { clip: rect(0, 9999px, 0, 0); transform: translate(0.5px, -0.5px); }
-      10% { clip: rect(0, 9999px, 5px, 0); transform: translate(-1.5px, 1px); }
-      20% { clip: rect(0, 9999px, 3px, 0); transform: translate(1px, -1px); }
-      100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-    }
+    <div class="card">
+      <h2>QRIS Pembayaran</h2>
+      <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-img">
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS" class="button">Saya sudah bayar</a>
+    </div>
 
-    @keyframes glitchBottom {
-      0% { clip: rect(0, 9999px, 0, 0); transform: translate(-0.5px, 0.5px); }
-      10% { clip: rect(6px, 9999px, 12px, 0); transform: translate(1.5px, -1px); }
-      20% { clip: rect(3px, 9999px, 10px, 0); transform: translate(-1px, 1px); }
-      100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-    }
+    <div class="card">
+      <h2>Contact Emix Store</h2>
+      <a href="https://wa.me/62895391694499" class="button">WhatsApp Emix</a>
+    </div>
 
-    /* Card shape background */
-    .card {
-      background: rgba(0, 0, 0, 0.35);
-      border-radius: 16px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
-      text-align: center;
-    }
+    <div class="card">
+      <h2>Instagram</h2>
+      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="button">Kunjungi IG</a>
+    </div>
 
-    /* Buttons */
-    .button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 12px 24px;
-      background: #000000b3;
-      color: #fff;
-      text-decoration
+    <div class="card">
+      <h2>Grup Jual Beli Akun</h2>
+      <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" class="button">Join Grup</a>
+    </div>
+
+    <div class="card">
+      <h2>Saluran WhatsApp</h2>
+      <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" class="button">Masuk Saluran</a>
+    </div>
+
+  </div>
+</body>
+</html>
