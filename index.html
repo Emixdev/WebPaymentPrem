@@ -1,73 +1,56 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emix Store Payment</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="zoom-in">
+
+  <div class="overlay"></div>
+
   <div class="container">
-    <h1>WELLCOME TO WEB<br>PAYMENT EMIX STORE</h1>
+    <h1 class="glitch" data-text="Wellcome to Website Emix Store">
+      Wellcome to Website Emix Store
+    </h1>
 
-    <div class="section-box">
-      <button class="button">Murid Nokos<br>Rp5.000</button>
-      <button class="button">Murid PP saluran Wa<br>Rp10.000</button>
+    <div class="card">
+      <h2>Murid Nokos</h2>
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20nokos" class="button">Order via WhatsApp</a>
     </div>
 
-    <div class="section-box">
-      <p>Scan QRIS di bawah ini:</p>
-      <button class="show-btn" onclick="showQRIS()">*Tampilkan QRIS</button>
-      <div id="qrisImage" style="display:none; margin-top:10px;">
-        <img src="https://qu.ax/srsEc.png" alt="QRIS" width="200" />
-      </div>
-      <p style="margin-top: 15px;">Payment virtual DANA:<br>
-      083137731581<br>a.n Yori Asanagi</p>
-      <button class="copy-btn" onclick="copyText()">Salin nomor</button>
+    <div class="card">
+      <h2>Murid Paid Promote</h2>
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20mau%20order%20murid%20paid%20promote" class="button">Order via WhatsApp</a>
     </div>
 
-    <div class="contact-section">
-      <p>Contact Emix Store via WhatsApp</p>
-      <a href="https://wa.me/62895391694499" target="_blank">
-        <button class="wa-button">Chat via WhatsApp</button>
-      </a>
+    <div class="card">
+      <h2>QRIS Pembayaran</h2>
+      <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-img">
+      <a href="https://wa.me/62895391694499?text=Halo%20Emix%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS" class="button">Saya sudah bayar</a>
     </div>
 
-    <div class="contact-section">
-      <p>Follow Instagram Emix Store</p>
-      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" target="_blank">
-        <button class="ig-button">Instagram Emix</button>
-      </a>
+    <div class="card">
+      <h2>Contact Emix Store</h2>
+      <a href="https://wa.me/62895391694499" class="button">WhatsApp Emix</a>
     </div>
 
-    <div class="contact-section">
-      <p>Gabung Saluran Emix Store</p>
-      <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" target="_blank">
-        <button class="wa-button">Saluran WhatsApp</button>
-      </a>
+    <div class="card">
+      <h2>Instagram</h2>
+      <a href="https://www.instagram.com/emixstr_?igsh=MTlobG5zZmE5NGZjbw==" class="button">Kunjungi IG</a>
     </div>
 
-    <div class="contact-section">
-      <p>Grup Jual Beli Akun</p>
-      <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" target="_blank">
-        <button class="wa-button">Gabung Grup</button>
-      </a>
+    <div class="card">
+      <h2>Grup Jual Beli Akun</h2>
+      <a href="https://chat.whatsapp.com/GWjw9m36E2HKrRgQL8Ezmh" class="button">Join Grup</a>
+    </div>
+
+    <div class="card">
+      <h2>Saluran WhatsApp</h2>
+      <a href="https://whatsapp.com/channel/0029Vb8fnU1KgsNnWIjovy2F" class="button">Masuk Saluran</a>
     </div>
 
   </div>
-
-  <script>
-    function showQRIS() {
-      const img = document.getElementById("qrisImage");
-      img.style.display = img.style.display === "none" ? "block" : "none";
-    }
-
-    function copyText() {
-      const nomor = "083137731581";
-      navigator.clipboard.writeText(nomor).then(function() {
-        alert("Nomor DANA berhasil disalin!");
-      });
-    }
-  </script>
 </body>
 </html>
