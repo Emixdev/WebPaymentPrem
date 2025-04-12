@@ -1,4 +1,4 @@
-/* Background & zoom-in */
+/* === Background & zoom-in === */
 body {
   margin: 0;
   padding: 0;
@@ -10,6 +10,7 @@ body {
   background-position: center top;
   background-attachment: fixed;
   animation: zoomIn 1s ease;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 @keyframes zoomIn {
@@ -23,14 +24,14 @@ body {
   }
 }
 
-/* Container */
+/* === Container === */
 .container {
   max-width: 800px;
   margin: auto;
   padding: 30px 20px;
 }
 
-/* Glitch Text */
+/* === Glitch Text === */
 .glitch {
   font-size: 1.8rem;
   font-weight: bold;
@@ -38,9 +39,7 @@ body {
   color: #fff;
   text-align: center;
   animation: glowPulse 2s infinite;
-  text-shadow: 0 0 3px #0ff, 0 0 5px #f0f;
 }
-
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -48,36 +47,28 @@ body {
   left: 0;
   width: 100%;
   overflow: hidden;
-  clip: rect(0, 900px, 0, 0);
 }
-
 .glitch::before {
   top: -2px;
   color: #f0f;
-  animation: glitchTop 1s infinite linear alternate-reverse;
+  animation: glitch 1s infinite linear alternate-reverse;
 }
-
 .glitch::after {
   top: 2px;
   color: #0ff;
-  animation: glitchBottom 1.2s infinite linear alternate-reverse;
+  animation: glitch 1s infinite linear alternate-reverse;
 }
 
-@keyframes glitchTop {
-  0% { clip: rect(0, 9999px, 0, 0); transform: translate(0.5px, -0.5px); }
-  10% { clip: rect(0, 9999px, 5px, 0); transform: translate(-1.5px, 1px); }
-  20% { clip: rect(0, 9999px, 3px, 0); transform: translate(1px, -1px); }
-  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+@keyframes glitch {
+  0% { transform: translateX(-1px); }
+  20% { transform: translateX(1px); }
+  40% { transform: translateX(-1px); }
+  60% { transform: translateX(1px); }
+  80% { transform: translateX(-1px); }
+  100% { transform: translateX(1px); }
 }
 
-@keyframes glitchBottom {
-  0% { clip: rect(0, 9999px, 0, 0); transform: translate(-0.5px, 0.5px); }
-  10% { clip: rect(6px, 9999px, 12px, 0); transform: translate(1.5px, -1px); }
-  20% { clip: rect(3px, 9999px, 10px, 0); transform: translate(-1px, 1px); }
-  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-}
-
-/* Card shape background */
+/* === Card style === */
 .card {
   background: rgba(0, 0, 0, 0.35);
   border-radius: 16px;
@@ -87,7 +78,7 @@ body {
   text-align: center;
 }
 
-/* Buttons */
+/* === Buttons === */
 .button {
   display: inline-block;
   margin-top: 10px;
@@ -105,14 +96,14 @@ body {
   box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
 }
 
-/* QRIS Image */
+/* === QRIS Image === */
 .qris-img {
   width: 200px;
   margin-top: 10px;
   border-radius: 12px;
 }
 
-/* Glowing pulse */
+/* === Glowing pulse === */
 @keyframes glowPulse {
   0% {
     text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
@@ -123,4 +114,70 @@ body {
   100% {
     text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
   }
+}
+
+/* === Popup Notification === */
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.85);
+  color: #0ff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #0ff;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif;
+  display: none;
+  animation: fadeInOut 8s ease-in-out;
+  max-width: 300px;
+  line-height: 1.4;
+}
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* === Mode Toggle Button === */
+.mode-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #000000cc;
+  color: #0ff;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #0ff;
+  font-family: monospace;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* === Particle.js Container === */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* === Dark mode support (jika ditambahkan JS) === */
+body.dark-mode {
+  background-color: #111;
+  color: #fff;
+}
+body.dark-mode .card {
+  background: rgba(255, 255, 255, 0.08);
+}
+body.dark-mode .button {
+  background: #333;
+  color: #0ff;
+}
+body.dark-mode .popup {
+  background: rgba(20, 20, 20, 0.9);
 }
