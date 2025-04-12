@@ -17,6 +17,14 @@
 
 <script>
   const music = document.getElementById('bg-music');
+
+  // Autoplay saat halaman dimuat (jika diizinkan browser)
+  window.addEventListener('DOMContentLoaded', () => {
+    music.play().catch(() => {
+      // Autoplay mungkin diblokir, biarin aja
+    });
+  });
+
   function toggleMusic() {
     if (music.paused) {
       music.play();
