@@ -6,6 +6,7 @@
   <title>Emix Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Background & zoom-in */
     body {
       margin: 0;
       padding: 0;
@@ -17,16 +18,24 @@
     }
 
     @keyframes zoomIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
+    /* Container */
     .container {
       max-width: 800px;
       margin: auto;
       padding: 30px 20px;
     }
 
+    /* Glitch Text */
     .glitch {
       font-size: 1.8rem;
       font-weight: bold;
@@ -73,6 +82,7 @@
       100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
     }
 
+    /* Card shape background */
     .card {
       background: rgba(0, 0, 0, 0.35);
       border-radius: 16px;
@@ -82,77 +92,11 @@
       text-align: center;
     }
 
+    /* Buttons */
     .button {
       display: inline-block;
       margin-top: 10px;
       padding: 12px 24px;
       background: #000000b3;
       color: #fff;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-    }
-
-    .qris-img {
-      width: 200px;
-      margin-top: 10px;
-      border-radius: 12px;
-    }
-
-    @keyframes glowPulse {
-      0% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
-      50% { text-shadow: 0 0 20px #0ff, 0 0 40px #f0f; }
-      100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Audio -->
-  <audio id="bg-music" autoplay muted loop>
-    <source src="https://audio.jukehost.co.uk/P7GIoI05L34aVoKuK887aDdhke6T9E07" type="audio/mpeg">
-  </audio>
-
-  <div class="container">
-    <div class="glitch" data-text="Wellcome to Website Emix Store">Wellcome to Website Emix Store</div>
-
-    <div class="card">
-      <p>Silakan lakukan pembayaran menggunakan QRIS berikut:</p>
-      <img src="https://qu.ax/srsEc.png" alt="QRIS" class="qris-img" />
-      <br>
-      <a href="https://wa.me/62895391694499" class="button">Saya Sudah Bayar</a>
-      <button class="button" onclick="toggleMusic()">Toggle Music</button>
-    </div>
-  </div>
-
-  <script>
-    const music = document.getElementById("bg-music");
-
-    // Autoplay + unmute setelah delay (biar work di browser)
-    window.addEventListener("load", () => {
-      music.play().then(() => {
-        setTimeout(() => {
-          music.muted = false;
-        }, 500);
-      }).catch((e) => {
-        console.log("Autoplay gagal:", e);
-      });
-    });
-
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-      } else {
-        music.pause();
-      }
-    }
-  </script>
-</body>
-</html>
+      text-decoration
