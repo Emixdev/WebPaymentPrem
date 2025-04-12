@@ -4,7 +4,191 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Emix Store Payment</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Global */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background-image: url('https://qu.ax/qBxAy.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: zoomIn 1s ease;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    @keyframes zoomIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    /* Glitch Text */
+    .glitch {
+      font-size: 2rem;
+      font-weight: bold;
+      position: relative;
+      color: #fff;
+      text-align: center;
+      animation: glowPulse 2s infinite;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+    .glitch::before {
+      top: -2px;
+      color: #f0f;
+      animation: glitch 1s infinite alternate-reverse;
+    }
+    .glitch::after {
+      top: 2px;
+      color: #0ff;
+      animation: glitch 1s infinite alternate-reverse;
+    }
+
+    @keyframes glitch {
+      0% { transform: translateX(-1px); }
+      20% { transform: translateX(1px); }
+      40% { transform: translateX(-1px); }
+      60% { transform: translateX(1px); }
+      80% { transform: translateX(-1px); }
+      100% { transform: translateX(1px); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
+      50% { text-shadow: 0 0 20px #0ff, 0 0 40px #f0f; }
+    }
+
+    /* Card */
+    .card {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    /* Button */
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 24px;
+      background: #000000b3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+
+    /* QRIS image */
+    .qris-img {
+      width: 200px;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    /* Toggle mode button */
+    #mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-family: monospace;
+      background: #000000b3;
+      color: #0ff;
+      box-shadow: 0 0 10px #0ff;
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+    #mode-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    /* Light mode */
+    body.light-mode {
+      background: #f5f5f5;
+      color: #111;
+    }
+    body.light-mode .card {
+      background: #ffffffd0;
+      color: #111;
+    }
+    body.light-mode .button {
+      background: #eeeeee;
+      color: #111;
+      box-shadow: 0 0 10px #00f;
+    }
+    body.light-mode #mode-toggle {
+      background: #ddd;
+      color: #00f;
+      box-shadow: 0 0 10px #00f;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      padding: 20px;
+      color: #0ff;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #0ff;
+      font-family: monospace;
+      text-align: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+    }
+    .popup.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .close-popup {
+      cursor: pointer;
+      display: block;
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
+    /* Particles container */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+  </style>
 </head>
 <body class="zoom-in">
   <div id="particles-js"></div>
@@ -16,7 +200,7 @@
 
   <button onclick="toggleMusic()" style="position:fixed; bottom:10px; right:10px; z-index:999; padding:10px 14px; background:#000; color:#0ff; border:none; border-radius:10px; box-shadow:0 0 10px #0ff; font-family:monospace;">Toggle Musik</button>
 
-  <button id="mode-toggle" onclick="toggleMode()" style="position:fixed; top:10px; right:10px; z-index:9999; background:#000; color:#0ff; padding:8px 12px; border:none; border-radius:8px; font-family:monospace;">Light Mode</button>
+  <button id="mode-toggle" onclick="toggleMode()">Light Mode</button>
 
   <div id="popup" class="popup">
     <p>Gabung grup jual beli akun & order jasa pembuatan website Emix sekarang!</p>
@@ -24,11 +208,8 @@
     <span class="close-popup" onclick="document.getElementById('popup').style.display='none'">×</span>
   </div>
 
-  <div class="overlay"></div>
   <div class="container">
-    <h1 class="glitch" data-text="Wellcome to Website Emix Store">
-      Wellcome to Website Emix Store
-    </h1>
+    <h1 class="glitch" data-text="Wellcome to Website Emix Store">Wellcome to Website Emix Store</h1>
 
     <div class="card">
       <h2>Murid Nokos</h2>
@@ -83,7 +264,7 @@
     }
 
     setTimeout(() => {
-      document.getElementById("popup").style.display = "block";
+      document.getElementById("popup").classList.add("show");
     }, 4000);
 
     particlesJS("particles-js", {
