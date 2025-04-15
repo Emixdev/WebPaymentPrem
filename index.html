@@ -291,5 +291,31 @@
       "retina_detect": true
     });
   </script>
+  <script>
+    // Ubah tanggal expired sesuai data klien
+    const tanggalExpired = "2025-04-15"; // <-- ganti tanggal expired klien di sini
+
+    const hariTersisa = Math.ceil((new Date(tanggalExpired) - new Date()) / (1000 * 60 * 60 * 24));
+
+    if (hariTersisa <= 5 && hariTersisa >= 0) {
+      const bubble = document.createElement("div");
+      bubble.style.position = "fixed";
+      bubble.style.bottom = "20px";
+      bubble.style.right = "20px";
+      bubble.style.background = "#ff4d4d";
+      bubble.style.color = "#fff";
+      bubble.style.padding = "15px 20px";
+      bubble.style.borderRadius = "10px";
+      bubble.style.boxShadow = "0 0 12px rgba(255, 77, 77, 0.6)";
+      bubble.style.zIndex = "999";
+      bubble.style.fontFamily = "sans-serif";
+      bubble.innerHTML = `
+        <b>Peringatan:</b><br>
+        Website Anda akan <b>expired dalam ${hariTersisa} hari</b>.<br>
+        Hubungi <a href="https://wa.me/62895391694499" style="color: yellow;">Emix (Developer)</a> untuk perpanjangan.
+      `;
+      document.body.appendChild(bubble);
+    }
+  </script>
 </body>
 </html>
