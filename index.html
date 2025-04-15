@@ -300,8 +300,9 @@
     if (hariTersisa <= 5 && hariTersisa >= 0) {
       const bubble = document.createElement("div");
       bubble.style.position = "fixed";
-      bubble.style.bottom = "20px";
-      bubble.style.right = "20px";
+      bubble.style.top = "50%";
+      bubble.style.left = "50%";
+      bubble.style.transform = "translate(-50%, -50%)";
       bubble.style.background = "#ff4d4d";
       bubble.style.color = "#fff";
       bubble.style.padding = "15px 20px";
